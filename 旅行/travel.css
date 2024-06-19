@@ -1,0 +1,252 @@
+/* 全局样式 */
+* {
+    padding: 0;  /* 去除所有元素的内边距 */
+    margin: 0;   /* 去除所有元素的外边距 */
+    box-sizing: border-box;  /* 设置元素的 box-sizing 为 border-box，使 padding 和 border 包含在元素的 total width 和 height 中 */
+}
+
+body {
+    display: flex;  /* 使用 flexbox 布局 */
+    flex-direction: column;  /* 使子元素垂直排列 */
+    font-family: Helvetica, Arial, Tahoma, Verdana;  /* 设置字体系列 */
+    font-size: 14px;  /* 设置字体大小 */
+    color: white;  /* 设置字体颜色 */
+    background: url(../image/background.jpg) no-repeat center center/cover fixed;  /* 设置背景图片并固定位置 */
+    min-height: 100vh;  /* 设置最小高度为视口高度 */
+}
+
+body::before {
+    content: "";  /* 生成一个空内容 */
+    position: fixed;  /* 固定定位 */
+    top: 0;  /* 置于顶部 */
+    left: 0;  /* 置于左侧 */
+    right: 0;  /* 置于右侧 */
+    bottom: 0;  /* 置于底部 */
+    background-color: rgba(90, 89, 89, 0.2);  /* 设置半透明背景颜色 */
+    z-index: -1;  /* 设置 z-index 使其位于背景图片之上，内容之下 */
+}
+
+/* 侧栏样式 */
+.sidebar {
+    width: 200px;  /* 设置宽度 */
+    background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);  /* 设置渐变背景 */
+    background-size: cover;  /* 背景覆盖 */
+    padding: 10px;  /* 内边距 */
+    height: 100vh;  /* 高度为视口高度 */
+    display: flex;  /* 使用 flexbox 布局 */
+    flex-direction: column;  /* 使子元素垂直排列 */
+    align-items: center;  /* 子元素居中对齐 */
+    position: fixed;  /* 固定定位 */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);  /* 添加阴影效果 */
+}
+
+.profile-circle {
+    position: relative;  /* 相对定位 */
+    margin-top: 30px;  /* 顶部外边距 */
+    width: 150px;  /* 宽度 */
+    height: 150px;  /* 高度 */
+    display: flex;  /* 使用 flexbox 布局 */
+    justify-content: center;  /* 子元素水平居中 */
+    align-items: center;  /* 子元素垂直居中 */
+}
+
+.avatar {
+    width: 90px;  /* 宽度 */
+    height: 90px;  /* 高度 */
+    border-radius: 50%;  /* 设置为圆形 */
+    position: relative;  /* 相对定位 */
+    z-index: 2;  /* 设置 z-index 使其位于波纹效果之上 */
+    display: block;  /* 块级元素 */
+}
+
+.ripple {
+    position: absolute;  /* 绝对定位 */
+    top: 50%;  /* 垂直居中 */
+    left: 50%;  /* 水平居中 */
+    width: 120px;  /* 宽度 */
+    height: 120px;  /* 高度 */
+    background: rgba(0, 0, 255, 0.2);  /* 半透明背景颜色 */
+    border-radius: 50%;  /* 设置为圆形 */
+    transform: translate(-50%, -50%);  /* 使用 transform 中心定位 */
+    z-index: 1;  /* 设置 z-index 使其位于头像之下 */
+    animation: ripple-animation 2s infinite;  /* 添加动画效果 */
+}
+
+@keyframes ripple-animation {
+    0% {
+        transform: translate(-50%, -50%) scale(1);  /* 初始大小 */
+        opacity: 1;  /* 初始透明度 */
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);  /* 结束大小 */
+        opacity: 0;  /* 结束透明度 */
+    }
+}
+
+.nav-links {
+    margin-top: 20px;  /* 顶部外边距 */
+    width: 200px;  /* 宽度 */
+    display: flex;  /* 使用 flexbox 布局 */
+    flex-direction: column;  /* 子元素垂直排列 */
+    align-items: center;  /* 子元素居中对齐 */
+}
+
+.nav-link {
+    color: white;  /* 字体颜色 */
+    text-decoration: none;  /* 去除下划线 */
+    font-size: 18px;  /* 字体大小 */
+    width: 100%;  /* 宽度 */
+    height: 70px;  /* 高度 */
+    line-height: 70px;  /* 行高 */
+    padding-left: 40px;  /* 左内边距 */
+    transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;  /* 过渡效果 */
+}
+
+.nav-link.active {
+    position: relative;  /* 相对定位 */
+    background-color: transparent;  /* 背景颜色透明 */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);  /* 添加阴影 */
+}
+
+.nav-link.active:before {
+    content: '';  /* 生成空内容 */
+    position: absolute;  /* 绝对定位 */
+    left: 0;  /* 左对齐 */
+    top: 0;  /* 顶部对齐 */
+    bottom: 0;  /* 底部对齐 */
+    width: 5px;  /* 宽度 */
+    background-color: #ee3e3e;  /* 背景颜色 */
+}
+
+.nav-link:hover,
+.nav-link.active:hover {
+    background: rgba(0, 0, 255, 0.2);  /* 背景颜色 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* 添加阴影 */
+    color: #fff;  /* 字体颜色 */
+}
+
+.header {
+    position: absolute;  /* 绝对定位 */
+    top: 10px;  /* 顶部对齐 */
+    right: 20px;  /* 右对齐 */
+    background-color: transparent;  /* 背景颜色透明 */
+    padding: 10px;  /* 内边距 */
+    border-radius: 10px;  /* 边框圆角 */
+    display: flex;  /* 使用 flexbox 布局 */
+    align-items: right;  /* 子元素右对齐 */
+    z-index: 10;  /* z-index */
+}
+
+.header .icons {
+    display: flex;  /* 使用 flexbox 布局 */
+    gap: 10px;  /* 元素间距 */
+}
+
+.header .icons a img {
+    width: 24px;  /* 宽度 */
+    height: 24px;  /* 高度 */
+    transition: transform 0.3s ease;  /* 过渡效果 */
+    margin-right: 10px;  /* 右外边距 */
+}
+
+.header .icons a img:hover {
+    transform: scale(1.2);  /* 鼠标悬停放大 */
+}
+
+.header .icons a:hover .hover-image {
+    display: block;  /* 鼠标悬停显示 */
+}
+
+.hover-image {
+    display: none;  /* 初始隐藏 */
+    position: absolute;  /* 绝对定位 */
+    top: 100%;  /* 顶部对齐 */
+    left: 50%;  /* 左对齐 */
+    transform: translate(-50%, 10px);  /* 使用 transform 调整位置 */
+    z-index: 10;  /* z-index */
+}
+
+.hover-image img {
+    width: 200px !important;  /* 强制宽度 */
+    height: auto !important;  /* 强制高度自适应 */
+    display: block;  /* 块级元素 */
+}
+
+.content {
+    padding: 20px;  /* 内边距 */
+    max-width: calc(1250px - 200px);  /* 最大宽度 */
+    margin: 20px auto;  /* 上下外边距，水平居中 */
+}
+
+/* 内容区域样式 */
+.container {
+    flex: 1;  /* 占满剩余空间 */
+    display: flex;  /* 使用 flexbox 布局 */
+    flex-direction: column;  /* 子元素垂直排列 */
+    margin-left: 200px;  /* 左外边距 */
+    padding-top: 50px;  /* 上内边距 */
+    transition: all 0.4s ease;  /* 过渡效果 */
+}
+
+/* 网格样式 */
+.grid {
+    display: grid;  /* 使用 CSS 网格布局 */
+    /* 当可用空间足够时，网格系统会尽量多地创建宽度至少为 300px 的列，每个列最多可以扩展到 1fr 的比例单位。 */
+    /* 当空间不足以容纳多个 300px 宽的列时，列的数量会减少，以确保每列至少有 300px 的宽度。 */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;  /* 网格间距 */
+    transition: all 0.4s ease;  /* 过渡效果 */
+}
+
+.grid-item {
+    background: white;  /* 背景颜色 */
+    border-radius: 8px;  /* 边框圆角 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* 添加阴影 */
+    transition: transform 0.4s ease, background-color 0.4s ease;  /* 过渡效果 */
+    overflow: hidden;  /* 超出部分隐藏 */
+}
+
+.grid-item img {
+    width: 80%;  /* 宽度 */
+    height: auto;  /* 高度自适应 */
+    margin: 10px auto;  /* 上下外边距，水平居中 */
+    display: block;  /* 块级元素 */
+}
+
+.grid-item h2 {
+    background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);  /* 背景渐变 */
+    line-height: 1.5em;  /* 行高 */
+    padding: 15px;  /* 内边距 */
+    margin: 0;  /* 外边距 */
+    text-align: center;  /* 文本居中 */
+}
+
+.grid-item h3 {
+    text-align: center;  /* 文本居中 */
+    padding: 10px;  /* 内边距 */
+    font-size: 0.9em;  /* 字体大小 */
+    color: #999;  /* 字体颜色 */
+}
+
+.grid-item:hover {
+    transform: scale(1.05);  /* 鼠标悬停放大 */
+    background-color: #f0f0f0;  /* 背景颜色 */
+}
+
+/* 页脚样式 */
+footer {
+    background: transparent; /* 设置页脚区域背景为透明 */
+    padding: 10px; /* 内边距为10px */
+    height: 50px; /* 设置页脚区域高度为50px */
+    margin-left: 200px; /* 左外边距为10px */
+    margin-bottom: 10px; /* 下外边距为10px */
+}
+
+footer p {
+    font-size: 12px; /* 字体大小 */
+    font-family: helvetica, arial, tahoma, verdana; /* 设置段落字体 */
+    text-align: center; /* 文本居中对齐 */
+    color: white; /* 文本颜色为白色 */
+}
+

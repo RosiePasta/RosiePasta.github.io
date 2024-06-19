@@ -1,0 +1,346 @@
+/* 全局样式 */
+* {
+    padding: 0; /* 移除所有元素的内边距 */
+    margin: 0; /* 移除所有元素的外边距 */
+    box-sizing: border-box; /* 包括内边距和边框在内计算元素的总宽度和高度 */
+}
+
+body {
+    display: flex;
+    flex-direction: column;  /* 子元素垂直排列 */
+    font-family: Helvetica, Arial, Tahoma, Verdana; /* 设置字体系列 */
+    font-size: 14px; /* 设置字体大小 */
+    color: white; /* 设置文本颜色为白色 */
+    background: url(../image/background.jpg) no-repeat center center/cover fixed; /* 设置背景图像，不重复，居中对齐，覆盖整个容器，固定背景 */
+}
+
+body::before {
+    content: ""; /* 生成一个空内容 */
+    position: fixed; /* 固定位置 */
+    top: 0; /* 距离顶部0 */
+    left: 0; /* 距离左侧0 */
+    right: 0; /* 距离右侧0 */
+    bottom: 0; /* 距离底部0 */
+    background-color: rgba(90, 89, 89, 0.2); /* 设置半透明背景色 */
+    z-index: -1; /* 将其置于其他内容之后 */
+}
+
+/* 侧栏样式 */
+.sidebar {
+    width: 200px; /* 设置宽度为200px */
+    background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%); /* 设置背景为渐变色 */
+    /* background-image: linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%, #faaca8 100%); */ /* 注释的备用背景 */
+    background-size: cover; /* 背景覆盖整个容器 */
+    padding: 10px; /* 内边距10px */
+    height: 100vh; /* 高度为视口高度 */
+    display: flex; /* 使用flex布局 */
+    flex-direction: column; /* 子元素垂直排列 */
+    align-items: center; /* 子元素水平居中 */
+    position: fixed; /* 固定位置 */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); /* 设置阴影效果 */
+}
+
+.profile-circle {
+    position: relative; /* 相对定位 */
+    margin-top: 30px; /* 上外边距30px */
+    width: 150px; /* 宽度150px */
+    height: 150px; /* 高度150px */
+    display: flex; /* 使用flex布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+.avatar {
+    width: 90px; /* 宽度90px */
+    height: 90px; /* 高度90px */
+    border-radius: 50%; /* 圆形边框 */
+    position: relative; /* 相对定位 */
+    z-index: 2; /* 设置层叠顺序 */
+    display: block; /* 块级显示 */
+}
+
+.ripple {
+    position: absolute; /* 绝对定位 */
+    top: 50%; /* 距离顶部50% */
+    left: 50%; /* 距离左侧50% */
+    width: 120px; /* 宽度120px */
+    height: 120px; /* 高度120px */
+    background: rgba(0, 0, 255, 0.2); /* 半透明蓝色背景 */
+    border-radius: 50%; /* 圆形 */
+    transform: translate(-50%, -50%); /* 移动到中心位置 */
+    z-index: 1; /* 设置层叠顺序 */
+    animation: ripple-animation 2s infinite; /* 添加动画效果 */
+}
+
+@keyframes ripple-animation {
+    0% {
+        transform: translate(-50%, -50%) scale(1); /* 初始状态：缩放比例为1 */
+        opacity: 1; /* 初始透明度为1 */
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.5); /* 最终状态：缩放比例为1.5 */
+        opacity: 0; /* 最终透明度为0 */
+    }
+}
+
+.nav-links {
+    margin-top: 20px; /* 上外边距20px */
+    width: 200px; /* 宽度200px */
+    display: flex; /* 使用flex布局 */
+    flex-direction: column; /* 子元素垂直排列 */
+    align-items: center; /* 子元素水平居中 */
+}
+
+.nav-link {
+    color: white; /* 文本颜色为白色 */
+    text-decoration: none; /* 移除文本装饰 */
+    font-size: 18px; /* 字体大小18px */
+    width: 100%; /* 宽度100% */
+    height: 70px; /* 高度70px */
+    line-height: 70px; /* 行高70px，使文本垂直居中 */
+    padding-left: 40px; /* 左内边距40px */
+    transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease; /* 添加背景色、阴影和颜色的过渡效果 */
+}
+
+.nav-link.active {
+    position: relative; /* 相对定位 */
+    background-color: transparent; /* 背景色透明 */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+}
+
+.nav-link.active:before {
+    content: ''; /* 生成一个空内容 */
+    position: absolute; /* 绝对定位 */
+    left: 0; /* 距离左侧0 */
+    top: 0; /* 距离顶部0 */
+    bottom: 0; /* 距离底部0 */
+    width: 5px; /* 宽度5px */
+    background-color: #ee3e3e; /* 设置背景色 */
+}
+
+.nav-link:hover,
+.nav-link.active:hover {
+    background: rgba(0, 0, 255, 0.2); /* 悬停时背景色变为半透明蓝色 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+    color: #fff; /* 文本颜色为白色 */
+}
+
+.header {
+    position: absolute; /* 绝对定位 */
+    top: 10px; /* 距离顶部10px */
+    right: 20px; /* 距离右侧20px */
+    background-color: transparent; /* 背景色透明 */
+    padding: 10px; /* 内边距10px */
+    border-radius: 10px; /* 圆角10px */
+    display: flex; /* 使用flex布局 */
+    align-items: right; /* 子元素右对齐 */
+    z-index: 10; /* 设置层叠顺序 */
+}
+
+.header .icons {
+    display: flex; /* 使用flex布局 */
+    gap: 10px; /* 子元素之间的间距为10px */
+}
+
+.header .icons a img {
+    width: 24px; /* 图像宽度24px */
+    height: 24px; /* 图像高度24px */
+    transition: transform 0.3s ease; /* 添加变换效果的过渡 */
+    margin-right: 10px; /* 右外边距10px */
+}
+
+.header .icons a img:hover {
+    transform: scale(1.2); /* 悬停时图像放大1.2倍 */
+}
+
+.header .icons a:hover .hover-image {
+    display: block; /* 悬停时显示 */
+}
+
+.hover-image {
+    display: none; /* 默认不显示 */
+    position: absolute; /* 绝对定位 */
+    top: 100%; /* 距离顶部100% */
+    left: 50%; /* 距离左侧50% */
+    transform: translate(-50%, 10px); /* 移动到中心位置并向下移动10px */
+    z-index: 10; /* 设置层叠顺序 */
+}
+
+.hover-image img {
+    width: 200px !important; /* 图像宽度200px，使用!important覆盖其他样式 */
+    height: auto !important; /* 高度自动调整，使用!important覆盖其他样式 */
+    display: block; /* 块级显示 */
+}
+
+.container {
+    padding: 20px; /* 内边距20px */
+    flex: 1; /* 占据剩余空间 */
+    width: 82%; /* 宽度82% */
+    margin-left: 200px; /* 左外边距200px */
+    margin: 0 auto; /* 上下左右外边距自动，居中对齐 */
+}
+
+.mytitle {
+    text-align: center; /* 文本居中对齐 */
+    margin: 40px auto 20px 200px; /* 上外边距40px，左右外边距自动，下外边距20px，左外边距200px */
+    font-family: Cambria, arial, tahoma, verdana; /* 设置字体系列 */
+}
+
+/* 时间轴样式 */
+#timeline {
+    position: relative; /* 相对定位 */
+    padding: 20px 0; /* 上下内边距20px */
+    width: calc(100% - 200px); /* 宽度为总宽度减去200px */
+    margin-left: 200px; /* 左外边距200px */
+    overflow: hidden; /* 隐藏溢出的内容 */
+    transition: all 0.4s ease; /* 添加所有属性的过渡效果 */
+}
+
+#timeline::before {
+    content: ""; /* 空内容 */
+    position: absolute; /* 绝对定位 */
+    top: 0; /* 距离顶部0 */
+    left: 50%; /* 距离左侧50% */
+    width: 3px; /* 宽度3px */
+    height: 100%; /* 高度100% */
+    background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%); /* 设置背景为渐变色 */
+    transform: translateX(-50%); /* 移动到中心位置 */
+}
+
+.timeline-item {
+    margin-bottom: 30px; /* 下外边距30px */
+    position: relative; /* 相对定位 */
+    width: 100%; /* 宽度100% */
+}
+
+.timeline-content {
+    position: relative; /* 相对定位 */
+    width: 45%; /* 宽度45% */
+    background: white; /* 背景色白色 */
+    border-radius: 8px; /* 圆角8px */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+    transition: all 0.3s ease; /* 添加所有属性的过渡效果 */
+    transform-origin: center; /* 设置变换的原点为中心 */
+}
+
+.timeline-content.left {
+    left: 5%; /* 距离左侧5% */
+    transform: translateX(-5%); /* 左移5% */
+    text-align: right; /* 文本右对齐 */
+}
+
+.timeline-content.right {
+    left: 50%; /* 距离左侧50% */
+    transform: translateX(5%); /* 右移5% */
+    text-align: left; /* 文本左对齐 */
+}
+
+.timeline-content.left h2,
+.timeline-content.right h2 {
+    background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%); /* 设置背景为渐变色 */
+    color: white; /* 文本颜色为白色 */
+    line-height: 70px; /* 行高70px，使文本垂直居中 */
+    height: 70px; /* 高度70px */
+    border-radius: 3px 3px 0 0; /* 设置圆角 */
+}
+
+.timeline-content.left h2 {
+    text-align: right; /* 文本右对齐 */
+    padding-right: 30px; /* 右内边距30px */
+}
+
+.timeline-content.right h2 {
+    text-align: left; /* 文本左对齐 */
+    padding-left: 30px; /* 左内边距30px */
+}
+
+.timeline-content:hover {
+    transform: scale(1.05); /* 鼠标悬停时放大1.05倍 */
+    background-color: #f0f0f0; /* 背景色变为浅灰色 */
+}
+
+.timeline-content img {
+    margin: 10px; /* 外边距10px */
+    width: 420px; /* 宽度420px */
+}
+
+.timeline-content.left img {
+    padding-right: 20px; /* 右内边距20px */
+}
+
+.timeline-content.right img {
+    padding-left: 20px; /* 左内边距20px */
+}
+
+.myend {
+    text-align: center; /* 文本居中对齐 */
+    margin: 0 auto 20px 200px; /* 上外边距0，左右外边距自动，下外边距20px，左外边距200px */
+    color: white; /* 文本颜色为白色 */
+    font-family: Cambria, arial, tahoma, verdana; /* 设置字体系列 */
+}
+
+/* 页脚样式 */
+footer {
+    background: transparent; /* 设置背景色透明 */
+    padding: 10px; /* 内边距10px */
+    height: 50px; /* 高度50px */
+    margin-left: 200px; /* 左外边距200px */
+    margin-bottom: 10px; /* 下外边距10px */
+}
+
+footer p {
+    font-size: 12px; /* 字体大小12px */
+    font-family: helvetica, arial, tahoma, verdana; /* 设置字体系列 */
+    text-align: center; /* 文本居中对齐 */
+    color: white; /* 文本颜色为白色 */
+}
+
+@media screen and (max-width: 1000px) {
+    .sidebar {
+        transform: translateX(-100%); /* 侧栏移出视图 */
+    }
+
+    .sidebar.collapsed {
+        transform: translateX(0); /* 展开时恢复原位置 */
+    }
+
+    .mytitle {
+        margin: 20px auto; /* 标题上下外边距为20px，左右自动 */
+    }
+
+    #timeline {
+        margin: 30px; /* 时间轴外边距30px */
+        padding: 0px; /* 时间轴内边距为0 */
+        width: 90%; /* 宽度为90% */
+    }
+
+    .timeline-content {
+        width: 70%; /* 宽度为70% */
+        margin: 0 auto; /* 上下外边距为0，左右自动 */
+        float: none; /* 清除浮动 */
+        left: 0 !important; /* 清除left属性 */
+        transform: none !important; /* 清除transform属性 */
+        transition: all 0.3s ease; /* 添加所有属性的过渡效果 */
+    }
+
+    .timeline-content h2 {
+        padding: 0 !important; /* 清除内边距 */
+        text-align: center !important; /* 文本居中对齐 */
+        transition: all 0.3s ease; /* 添加所有属性的过渡效果 */
+    }
+
+    .timeline-content img {
+        margin: 10px 5px; /* 上下外边距10px，左右外边距5px */
+        width: 90%; /* 宽度为90% */
+        transition: all 0.3s ease; /* 添加所有属性的过渡效果 */
+    }
+
+    .myend {
+        margin: 0 auto; /* 上下外边距为0，左右自动 */
+    }
+
+    footer {
+        margin: 20px auto; /* 上下外边距为20px，左右自动 */
+    }
+}

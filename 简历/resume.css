@@ -1,0 +1,255 @@
+/* 全局样式 */
+* {
+    padding: 0; /* 移除所有元素的内边距 */
+    margin: 0; /* 移除所有元素的外边距 */
+    box-sizing: border-box; /* 包括内边距和边框在内计算元素的总宽度和高度 */
+}
+
+body {
+    display: flex; /* 使用flex布局 */
+    flex-direction: column; /* 垂直排列子元素 */
+    font-family: Helvetica, Arial, Tahoma, Verdana; /* 设置字体 */
+    font-size: 14px; /* 设置字体大小 */
+    color: white; /* 设置文字颜色 */
+    background: url(../image/background.jpg) no-repeat center center/cover fixed; /* 设置背景图片，居中且覆盖，固定背景 */
+    min-height: 100vh; /* 设置最小高度为视口高度 */
+}
+
+body::before {
+    content: ""; /* 使用伪元素 */
+    position: fixed; /* 固定位置 */
+    top: 0; /* 距顶部0 */
+    left: 0; /* 距左边0 */
+    right: 0; /* 距右边0 */
+    bottom: 0; /* 距底部0 */
+    background-color: rgba(90, 89, 89, 0.2); /* 半透明灰色背景 */
+    z-index: -1; /* 放置在所有内容的下面 */
+}
+
+/* 侧栏样式 */
+.sidebar {
+    width: 200px; /* 固定宽度 */
+    background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%); /* 设置渐变背景 */
+    background-size: cover; /* 背景覆盖 */
+    padding: 10px; /* 内边距 */
+    height: 100vh; /* 高度为视口高度 */
+    display: flex; /* 使用flex布局 */
+    flex-direction: column; /* 垂直排列子元素 */
+    align-items: center; /* 子元素水平居中 */
+    position: fixed; /* 固定位置 */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); /* 设置阴影 */
+}
+
+.profile-circle {
+    position: relative; /* 相对定位 */
+    margin-top: 30px; /* 上外边距 */
+    width: 150px; /* 宽度 */
+    height: 150px; /* 高度 */
+    display: flex; /* 使用flex布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+.avatar {
+    width: 90px; /* 宽度 */
+    height: 90px; /* 高度 */
+    border-radius: 50%; /* 圆形 */
+    position: relative; /* 相对定位 */
+    z-index: 2; /* 层级2 */
+    display: block; /* 块级元素 */
+}
+
+.ripple {
+    position: absolute; /* 绝对定位 */
+    top: 50%; /* 距顶部50% */
+    left: 50%; /* 距左边50% */
+    width: 120px; /* 宽度 */
+    height: 120px; /* 高度 */
+    background: rgba(0, 0, 255, 0.2); /* 半透明蓝色背景 */
+    border-radius: 50%; /* 圆形 */
+    transform: translate(-50%, -50%); /* 移动到中心 */
+    z-index: 1; /* 层级1 */
+    animation: ripple-animation 2s infinite; /* 动画效果 */
+}
+
+@keyframes ripple-animation {
+    0% {
+        transform: translate(-50%, -50%) scale(1); /* 初始缩放 */
+        opacity: 1; /* 初始透明度 */
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.5); /* 最终缩放 */
+        opacity: 0; /* 最终透明度 */
+    }
+}
+
+.nav-links {
+    margin-top: 20px; /* 上外边距 */
+    width: 200px; /* 宽度 */
+    display: flex; /* 使用flex布局 */
+    flex-direction: column; /* 垂直排列子元素 */
+    align-items: center; /* 子元素水平居中 */
+}
+
+.nav-link {
+    color: white; /* 文字颜色 */
+    text-decoration: none; /* 无下划线 */
+    font-size: 18px; /* 字体大小 */
+    width: 100%; /* 宽度100% */
+    height: 70px; /* 高度 */
+    line-height: 70px; /* 行高 */
+    padding-left: 40px; /* 左内边距 */
+    transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease; /* 过渡效果 */
+}
+
+.nav-link.active {
+    position: relative; /* 相对定位 */
+    background-color: transparent; /* 透明背景 */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1); /* 阴影 */
+}
+
+.nav-link.active:before {
+    content: ''; /* 使用伪元素 */
+    position: absolute; /* 绝对定位 */
+    left: 0; /* 距左边0 */
+    top: 0; /* 距顶部0 */
+    bottom: 0; /* 距底部0 */
+    width: 5px; /* 宽度 */
+    background-color: #ee3e3e; /* 背景颜色 */
+}
+
+.nav-link:hover,
+.nav-link.active:hover {
+    background: rgba(0, 0, 255, 0.2); /* 背景颜色 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 阴影 */
+    color: #fff; /* 文字颜色 */
+}
+
+.header {
+    position: absolute; /* 绝对定位 */
+    top: 10px; /* 距顶部10px */
+    right: 20px; /* 距右边20px */
+    background-color: transparent; /* 透明背景 */
+    padding: 10px; /* 内边距 */
+    border-radius: 10px; /* 圆角 */
+    display: flex; /* 使用flex布局 */
+    align-items: right; /* 子元素靠右 */
+    z-index: 10; /* 层级10 */
+}
+
+.header .icons {
+    display: flex; /* 使用flex布局 */
+    gap: 10px; /* 子元素间距 */
+}
+
+.header .icons a img {
+    width: 24px; /* 宽度 */
+    height: 24px; /* 高度 */
+    transition: transform 0.3s ease; /* 变换过渡效果 */
+    margin-right: 10px; /* 右外边距 */
+}
+
+.header .icons a img:hover {
+    transform: scale(1.2); /* 悬停时缩放 */
+}
+
+.header .icons a:hover .hover-image {
+    display: block; /* 显示悬停图像 */
+}
+
+.container {
+    flex: 1; /* 弹性伸展 */
+    width: 100%; /* 宽度100% */
+    box-sizing: border-box; /* 包括内边距和边框在内计算元素的总宽度和高度 */
+    margin: 0 auto; /* 上下左右居中 */
+    padding-left: 200px; /* 左内边距 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+.hover-image {
+    display: none; /* 默认隐藏 */
+    position: absolute; /* 绝对定位 */
+    top: 100%; /* 距顶部100% */
+    left: 50%; /* 距左边50% */
+    transform: translate(-50%, 10px); /* 移动到中心 */
+    z-index: 10; /* 层级10 */
+}
+
+.hover-image img {
+    width: 200px !important; /* 固定宽度 */
+    height: auto !important; /* 自动高度 */
+    display: block; /* 块级元素 */
+}
+
+.custom-table {
+    border: 2px solid white; /* 边框 */
+    margin: 40px auto; /* 上下外边距40px，左右居中 */
+    margin-top: 80px; /* 上外边距80px */
+    width: 760px; /* 宽度 */
+    border-collapse: collapse; /* 合并边框 */
+}
+
+.custom-table th,
+.custom-table td {
+    border: 2px solid white; /* 单元格边框 */
+    width: 80px; /* 宽度 */
+    text-align: center; /* 文字居中 */
+}
+
+.td-title {
+    font-weight: bold; /* 加粗字体 */
+}
+
+.custom-table td img {
+    width: 100%; /* 宽度100% */
+    height: auto; /* 自动高度 */
+    border: 0; /* 无边框 */
+    display: block; /* 块级元素 */
+    margin: 0; /* 无外边距 */
+    padding: 0; /* 无内边距 */
+}
+
+.course {
+    height: 40px; /* 设置主修课程部分的高度为40px */
+}
+
+.course .adjust-width {
+    width: 170px; /* 设置特定课程单元格宽度为170px */
+}
+
+.experience-cell {
+    height: 100px; /* 设置任职经历部分的单元格高度为100px */
+    vertical-align: center; /* 垂直居中对齐 */
+}
+
+.award-cell {
+    height: 100px; /* 设置获奖经历部分的单元格高度为100px */
+    vertical-align: center; /* 垂直居中对齐 */
+}
+
+.competition-cell {
+    height: 150px; /* 设置比赛经历部分的单元格高度为150px */
+    vertical-align: center; /* 垂直居中对齐 */
+}
+
+.skill-cell {
+    height: 180px; /* 设置个人技能部分的单元格高度为180px */
+    vertical-align: center; /* 垂直居中对齐 */
+}
+
+footer {
+    background: transparent; /* 设置页脚区域背景为透明 */
+    padding: 10px; /* 内边距为10px */
+    height: 50px; /* 设置页脚区域高度为50px */
+    margin-left: 200px; /* 左外边距为10px */
+    margin-bottom: 10px; /* 下外边距为10px */
+}
+
+footer p {
+    font-size: 12px; /* 字体大小 */
+    font-family: helvetica, arial, tahoma, verdana; /* 设置段落字体 */
+    text-align: center; /* 文本居中对齐 */
+    color: white; /* 文本颜色为白色 */
+}
