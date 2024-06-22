@@ -191,7 +191,6 @@ body::before {
     align-items: center;  /* 子元素垂直居中 */
     z-index: 1;  /* 设置层级 */
     flex: 1;  /* 占据剩余空间 */
-    padding: 20px;  /* 内边距 */
     margin-top: 110px;
     margin-left: 200px;  /* 上、左外边距 */
     width: calc(100% - 200px);  /* 宽度为减去侧栏宽度后的剩余空间 */
@@ -335,15 +334,16 @@ body::before {
 
 /* 页脚区样式 */
 footer {
-    background: transparent;  /* 透明背景 */
-    margin-top: 200px;
-    margin-left: 200px;  /* 上、左外边距 */
-    padding: 10px;  /* 内边距 */
-    height: 50px;  /* 固定高度 */
+    background: transparent; /* 设置页脚区域背景为透明 */
+    padding: 10px; /* 内边距为10px */
+    height: 50px; /* 设置页脚区域高度为50px */
+    margin-top: 140px; /* 上外边距为10px */
+    margin-left: 200px; /* 左外边距为10px */
 }
 
 footer p {
-    font-size: 12px;  /* 字体大小 */
-    text-align: center;  /* 文本居中 */
-    color: white;  /* 文本颜色 */
+    font-size: 12px; /* 字体大小 */
+    font-family: helvetica, arial, tahoma, verdana; /* 设置段落字体 */
+    text-align: center; /* 文本居中对齐 */
+    color: white; /* 文本颜色为白色 */
 }
