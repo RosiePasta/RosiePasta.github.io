@@ -190,7 +190,6 @@ body::before {
     justify-content: center;  /* 子元素水平居中 */
     align-items: center;  /* 子元素垂直居中 */
     z-index: 1;  /* 设置层级 */
-    padding: 20px;  /* 内边距 */
     flex: 1;  /* 占据剩余空间 */
     margin-top: 110px;
     margin-left: 200px;  /* 上、左外边距 */
@@ -200,8 +199,8 @@ body::before {
 /* 主要内容--联系方式展示区 */
 .contactinfo {
     position: absolute;  /* 绝对定位 */
-    top: 100px;
-    left: 180px;  /* 距离顶部和左侧的距离 */
+    top: 80px;
+    left: 200px;  /* 距离顶部和左侧的距离 */
     width: 320px;
     height: 315px;  /* 固定宽高 */
     background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);  /* 渐变背景 */
