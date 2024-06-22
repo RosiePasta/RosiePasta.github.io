@@ -201,7 +201,7 @@ body::before {
 .contactinfo {
     position: absolute;  /* 绝对定位 */
     top: 100px;
-    left: 200px;  /* 距离顶部和左侧的距离 */
+    left: 180px;  /* 距离顶部和左侧的距离 */
     width: 320px;
     height: 315px;  /* 固定宽高 */
     background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);  /* 渐变背景 */
