@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>于棋琬伦 | 个人主页🏠</title>
+    <link rel="stylesheet"  type="text/css" href="index.css">
+</head>
+
+<!-- 主体body，内部有两个部分：主要内容区container、页脚区footer -->
+<!-- 使用弹性布局，元素垂直方向布局 -->
+<body>
+    <!-- 主要内容区 container，内部有两个部分：profile-circle、text-content -->
+    <!-- 使用弹性布局，元素垂直方向布局 -->
+    <main class="container">
+        <!-- 头像区profile-circle，内部有两个部分：avatar、ripple(水波纹效果) -->
+        <section class="profile-circle">
+            <img src="image/avatar.jpg" alt="头像" class="avatar">
+            <div class="ripple"></div>
+        </section>
+        <!-- end of profile-circle -->
+        <!-- 文字和导航按钮区 text-content，内部有三个部分：h1、h2、buttons-->
+        <!-- 使用盒模型布局 -->
+        <section class="text-content">
+            <h1>❤️WELCOME TO❤️</h1>
+            <h2>YQWL's 👩🏻‍💻 PAGE</h2>
+            <!-- 导航按钮区域 buttons，内部有四个按钮 button -->
+            <!-- 使用弹性布局，元素水平方向布局 -->
+            <div class="buttons">
+                <!-- 每个按钮 button都使用相对定位 -->
+                <a class="button" target="_blank" href="resume/resume.html">个人简历</a>
+                <a class="button" target="_blank" href="travel/travel.html">旅行足迹</a>
+                <a class="button" target="_blank" href="study/study.html">上学轨迹</a>
+                <a class="button" target="_blank" href="message/message.html">留言板</a>
+            </div>
+            <!-- end of buttons -->
+        </section>
+        <!-- end of text-content -->
+    </main>
+    <!-- end of container -->
+
+    <!-- 页脚区footer，使用盒模型布局 -->
+    <footer>
+        <p>&copy; 2024 于棋琬伦个人网站. 保留所有权利.</p>
+        <p>❤️THANKS FOR YOUR VISITING❤️</p>
+    </footer>
+    <!-- end of footer -->
+</body>
+
+</html>
